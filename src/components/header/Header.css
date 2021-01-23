@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+div.header {
+    background-color: rgba(36, 104, 136, 0.932);
+    position:fixed;
+    top: -40px;
+}
