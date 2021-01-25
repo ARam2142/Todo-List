@@ -4,9 +4,9 @@ import React from 'react'
 function TodoItem({ todo }) {
     return (
         <div>
-            <li className="list-group-item" key={todo.id}>{todo.text}</li>
+            <li className="list-group-item">{todo.text}</li>
             <button>X</button>
         </div>
-    )
+    );
 }
 export default TodoItem;

@@ -1,18 +1,15 @@
 import React from 'react';
 //import TodoForm from "./components/TodoForm";
-import TodoItem from "../components/TodoItem";
+import TodoItem from "./TodoItem";
 
 function TodoList({ todos }) {
+   const listItems = todos.map((todo) =>
+        <TodoItem key={todo.id} todo={todos} />
+    );
     return (
-        <div>
-            <ul className="list-group">
-                {todos.map((todo) => (
-                    <TodoItem key={todo.id}
-                        value={todo}
-                        todo={todos} />
-                ))}
-            </ul>
-        </div>
+        <ul className="list-group">
+            {listItems}
+        </ul>
     );
 }
 export default TodoList;
