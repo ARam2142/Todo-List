@@ -1,11 +1,23 @@
 import React from 'react'
-//import TodoForm from "./components/TodoForm";
 
-function TodoItem({ todo }) {
+function TodoItem({ todo, toggleComplete, removeTodoItem }) {
+
+    function handleCheckBoxClick() {
+        toggleComplete(todo.id);
+    }
+    function handleRemoveClick() {
+        removeTodoItem(todo.id)
+    }
     return (
-        <div>
-            <li className="list-group-item">{todo.text}</li>
-            <button>X</button>
+        <div style={{ display: "flex" }}>
+            <input type="checkbox" onClick={handleCheckBoxClick} />
+            <li style={{
+                color: "black",
+                textDecoration: todo.completed ? "line-through" : null
+            }}
+            >{todo.task}
+            </li>
+            <button onClick={handleRemoveClick}>X</button>
         </div>
     );
 }

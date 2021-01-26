@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';// generates new Id for you 
 
 function TodoForm({addTodo}) {
     //set up state for todoform since this userinput will change
-    const [todo, setTodos] = useState({
-        id: 0,
-        text: "",
-        status: false,
-    })
+    const [todo, setTodo] = useState({
+        id: "",
+        task: "",
+        completed: false
+    });
+
     //handles input when user types into the input field
-    function handleInputChange(e) {
-        setTodos({...todo, text: e.target.value });
+    function handleInputChange(e) {//takes in event as parameter
+        setTodo({ ...todo, task: e.target.value });//e.target.value contains new input from user
+        //passes in a new object with the old todo property spread onto 
+        //it and then update task with then new value 
+        //from the events target value
     }
     
-    //what the component should render on screen
-    useEffect(() => {
-        console.log(todo.text)
-        //addToList();
-    });
+
     
     //handles input submitted
     function addToList(e) {
-        e.preventDefault();
-        if (todo.text.trim()) {
-            addTodo({ ...todo, id: uuidv4() });
-            setTodos({ ...todo, text: "" });
+        e.preventDefault(); // prevents browser from refreshing
+        if (todo.task.trim()) {//removes white space on both sides if todo.task is not empty
+            addTodo({ ...todo, id: uuidv4() });//calls addTodo, passes in todo prop with updated Id
+            //resets task input
+            setTodo({ ...todo, task: "" });//calls setTodo, passes todo spread on to it with task with empty string
         }
     }
 
@@ -34,12 +35,11 @@ function TodoForm({addTodo}) {
         >
             <input
                 type="text"
-                name="value"
+                name="task"
+                value={todo.task}//this will be updated everytime input change is called
+                onChange={handleInputChange}//this will fire everytime input value changes
                 className="form-control mb-2 mr-sm-2"
-                id="inlineFormInputName2"
                 placeholder="add item"
-                value={todo.text}
-                onChange={handleInputChange}
             >
             </input>
             <button type="submit" className="btn btn-primary mb-2">Submit</button>
