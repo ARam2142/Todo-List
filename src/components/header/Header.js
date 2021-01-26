@@ -5,10 +5,8 @@ import "./Header.css";
 function Header(prop) {
     return (
         <Jumbotron style={{backgroundColor: 'rgb(0, 128, 255'}}>
-             {/* <header className="bg-dark text-white justify-content-center"> */}
                 <h1 className="justify-content-center">Welcome to the Todo List</h1>
                 <h5 className="text-center">What are you going to do today?</h5>
-            {/* </header> */}
         </Jumbotron> 
     )
 }
