@@ -30,6 +30,7 @@ function App() {
 
   //saving data to local storage
   useEffect(() => {
+    //converts localstoragekey to json object
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
   }, [todos])
 
