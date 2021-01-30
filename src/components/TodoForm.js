@@ -6,7 +6,7 @@ function TodoForm({addTodo}) {
     const [todo, setTodo] = useState({
         id: "",
         task: "",
-        completed: false
+        completed: false,
     });
 
     //handles input when user types into the input field

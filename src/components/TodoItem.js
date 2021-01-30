@@ -17,13 +17,14 @@ function TodoItem({ todo, toggleComplete, removeTodoItem }) {
     }
     return (
         <div style={{ display: "flex" }}>
-            <button onClick={handleCheckBoxClick}
+            <button
+                className="btn btn-outline-success fas fa-check-square fa-2x"
+                onClick={handleCheckBoxClick}
                 style={{
                     marginTop: '15px',
                     width: "50px",
                 }}
             >
-                <i className="fas fa-check-square fa-2x"></i>
             </button>
             <li style={{
                 marginLeft: "20px",
@@ -31,24 +32,20 @@ function TodoItem({ todo, toggleComplete, removeTodoItem }) {
                 marginTop: '15px',
                 minWidth: '300px',
                 textDecoration: todo.completed ? "line-through" : null,
-                //display: "flex",
             }}
             >
-            {/* <Grid container justify="space-between"> */}
-            <Typography inline variant="h5" color="primary" align="center">
-                {todo.task}
-            </Typography>
+                <Typography inline variant="h5" color="primary" align="center">
+                    {todo.task}
+                </Typography>
 
-            {/* </Grid> */}
-        
             </li>
-            <button className="trashbin" onClick={handleRemoveClick}
+            <button className="btn btn-outline-danger fas fa-trash-alt fa-2x" 
+            onClick={handleRemoveClick}
                 style={{
                     marginTop: '15px',
                     width: "50px",
                 }}
             >
-                <i className="fas fa-trash-alt fa-2x"></i>
             </button>
         </div>
     );
