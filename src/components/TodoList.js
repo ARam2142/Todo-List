@@ -17,7 +17,7 @@ function TodoList({ todos, toggleComplete, removeTodoItem }) {
             <List>
                 <ul className="list-group" 
                 style={{ display: "flex", 
-                //lineHeight: '30px'
+                listStyle: 'none'
                 }}>
                     {listItems}
                 </ul>
