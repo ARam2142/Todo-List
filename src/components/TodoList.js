@@ -15,7 +15,10 @@ function TodoList({ todos, toggleComplete, removeTodoItem }) {
     return (
         <div className="form-inline justify-content-center">
             <List>
-                <ul className="list-group" style={{ display: "flex" }}>
+                <ul className="list-group" 
+                style={{ display: "flex", 
+                //lineHeight: '30px'
+                }}>
                     {listItems}
                 </ul>
 
