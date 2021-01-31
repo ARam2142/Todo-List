@@ -7,7 +7,8 @@ p {
 }
 
 div.header {
-    background-color: rgba(36, 104, 136, 0.932);
+    /* background-color: rgba(136, 134, 36, 0.932); */
     position:fixed;
     top: -40px;
 }
+
