@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
 import TodoForm from "./components/TodoForm"
 import Footer from "./components/footer/Footer";
-import TodoList from "./components/TodoList"
+import TodoList from "./components/TodoList";
+import "./App.css";
 
 const LOCAL_STORAGE_KEY = "todo-list-todos";
 

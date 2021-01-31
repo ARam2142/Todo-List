@@ -1,8 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
-
-
 
 function TodoItem({ todo, toggleComplete, removeTodoItem }) {
 
@@ -16,7 +13,10 @@ function TodoItem({ todo, toggleComplete, removeTodoItem }) {
         removeTodoItem(todo.id)
     }
     return (
-        <div style={{ display: "flex" }}>
+        <div style={{ 
+            display: "flex",
+            // overflow: "scroll"
+            }}>
             <button
                 className="btn btn-outline-success fas fa-check-square fa-2x"
                 onClick={handleCheckBoxClick}
@@ -27,14 +27,13 @@ function TodoItem({ todo, toggleComplete, removeTodoItem }) {
             >
             </button>
             <li style={{
-                marginLeft: "20px",
-                marginRight: '20px',
                 marginTop: '15px',
-                minWidth: '300px',
+                backgroundColor: "grey",
+                minWidth: '375px',
                 textDecoration: todo.completed ? "line-through" : null,
             }}
             >
-                <Typography inline variant="h5" color="primary" align="center">
+                <Typography inline variant="h5" align="center">
                     {todo.task}
                 </Typography>
 
