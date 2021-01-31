@@ -29,6 +29,6 @@ html, body {
   border-bottom-right-radius: 5px;
 }
 
-ul {
-  margin-bottom: 140px;
+ul.list-group {
+  margin-bottom: 100px;
 }
