@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Header from "./components/header/Header";
 import TodoForm from "./components/TodoForm"
 import Footer from "./components/footer/Footer";
-import TodoList from "./components/TodoList";
+import TodoItem from "./components/TodoItem";
 import "./App.css";
 
+//const todoArray = [];
 //Handles new todos 
-const todoArray = []
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +14,7 @@ class App extends Component {
       id: '',
       title: '',
       completed: false,
+      todoArray: [],
     };
 
   }
@@ -25,22 +26,37 @@ class App extends Component {
     }
       , () => {//pass in call back as a function
         console.log(this.state)
+        let todos = this.state.todoArray;
+        todos.push({
+          id: id,
+          title: title,
+        });
+        this.setState({ todoArray: todos });
       });
   }
 
-
   //use todoArray.push this.state
   render() {
+
     return (
       <div>
         <Header />
         <TodoForm addToList={this.addToList} />
         {/*map over the todo array which will create a new todo item in array*/}
-        <div>
-          {todoArray.map((todo, index) => {
-            //return <TodoItem />
-          })}
-
+        <div className="form-inline justify-content-center" >
+          <ul className="list-group"
+            style={{
+              display: "flex",
+              listStyle: "none"
+            }}>
+            {this.state.todoArray.map((item, index) => {
+              return <TodoItem
+                key={index}
+                item={item} 
+                toggleClick={this.toggleClick}
+                />
+            })}
+          </ul>
         </div>
         <Footer />
       </div>
