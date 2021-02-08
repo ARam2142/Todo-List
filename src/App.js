@@ -4,9 +4,6 @@ import TodoForm from "./components/TodoForm"
 import Footer from "./components/footer/Footer";
 import TodoItem from "./components/TodoItem";
 import "./App.css";
-
-//const todoArray = [];
-//Handles new todos 
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +11,9 @@ class App extends Component {
       id: '',
       title: '',
       completed: false,
-      todoArray: [],
+      todoArray: []
     };
-
+    //this.toggleComplete = this.toggleComplete.bind(this)
   }
 
   addToList = (title, id) => {
@@ -32,12 +29,53 @@ class App extends Component {
           title: title,
         });
         this.setState({ todoArray: todos });
+        const todo = this.state.todoArray;
+        localStorage.setItem("todo-list", JSON.stringify(todo));
       });
   }
 
+  componentDidMount() {
+    const data = localStorage.getItem('todo-list');//gets the item
+    const dataToObj = JSON.parse(data);//converts back to js object
+    this.setState({
+      todoArray: data ? dataToObj : [] 
+    })
+  }
+
+
+  //delete todo items
+  deleteTodo = (id) => {
+    //spread operator copies the list
+    const todoArray = [...this.state.todoArray];
+
+    //filters out deleted item 
+    const updatedList = todoArray.filter(todo => todo.id !== id);
+
+    //updated state
+    this.setState({
+      todoArray: updatedList
+    });
+  };
+
+
+  // toggleComplete = (id) => {
+  //   //source from stackoverflox over: how to make line through todo
+  //   this.setState(
+  //     this.todoArray.map(todo => {
+  //       if (todo.id === id) {
+  //         return {
+  //           ...todo,
+  //           todoArray: !todo.completed
+  //         };
+  //       }
+  //       return todo
+  //     })
+  //   )
+  // }
+
+
   //use todoArray.push this.state
   render() {
-
     return (
       <div>
         <Header />
@@ -52,9 +90,10 @@ class App extends Component {
             {this.state.todoArray.map((item, index) => {
               return <TodoItem
                 key={index}
-                item={item} 
-                toggleClick={this.toggleClick}
-                />
+                item={item}
+                deleteTodo={this.deleteTodo}
+                toggleClick={this.toggleComplete}
+              />
             })}
           </ul>
         </div>
@@ -62,12 +101,5 @@ class App extends Component {
       </div>
     )
   }
-
-
 }
-
 export default App;
-
-
-//the code is one step behind. get submit to consolelog current 'submit'
-//research api component
