@@ -24,12 +24,9 @@ class TodoForm extends Component {
     //handles submit button
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addToList(this.state.title, uuidv4())
+        this.props.addToList(this.state.title, uuidv4());
         this.setState({ title: "" })
-        console.log()
     }
-
-
 
     render() {
         return (
