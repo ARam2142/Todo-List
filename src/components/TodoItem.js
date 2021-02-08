@@ -1,53 +1,55 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-
-function TodoItem({ todo, toggleComplete, removeTodoItem }) {
-
-    //checks that checkbox is clicked and completed
-    function handleCheckBoxClick() {
-        toggleComplete(todo.id);
+import React, { Component } from "react";
+import { Typography } from '@material-ui/core';
+class TodoItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
     }
 
-    //checks remove is clicked
-    function handleRemoveClick() {
-        removeTodoItem(todo.id)
+    handleRemove=(id)=> {
+        this.props.deleteTodo(id)
     }
-    return (
-        <div style={{ 
-            display: "flex",
-            // overflow: "scroll"
+    
+    render() {
+        let {item} = this.props;
+        return (
+            <div style={{
+                display: "flex",
+                overflow: "scroll"
             }}>
-            <button
-                className="btn btn-outline-success fas fa-check-square fa-2x"
-                onClick={handleCheckBoxClick}
-                style={{
+                <button
+                    className="btn btn-outline-success fas fa-check-square fa-2x"
+                    //onClick={this.hanld}
+                    style={{
+                        marginTop: '15px',
+                        width: "50px",
+                    }}
+                >
+                </button>
+                <li style={{
                     marginTop: '15px',
-                    width: "50px",
+                    backgroundColor: "grey",
+                    minWidth: '375px',
+                    textDecoration: item.completed ? "line-through" : null,
                 }}
-            >
-            </button>
-            <li style={{
-                marginTop: '15px',
-                backgroundColor: "grey",
-                minWidth: '375px',
-                textDecoration: todo.completed ? "line-through" : null,
-            }}
-            >
-                <Typography inline variant="h5" align="center">
-                    {todo.task}
-                </Typography>
+                >
+                    <Typography inline variant="h5" align="center">
+                        {item.title}
+                    </Typography>
 
-            </li>
-            <button className="btn btn-outline-danger fas fa-trash-alt fa-2x" 
-            onClick={handleRemoveClick}
-                style={{
-                    marginTop: '15px',
-                    width: "50px",
-                }}
-            >
-            </button>
-        </div>
-    );
+                </li>
+                <button className="btn btn-outline-danger fas fa-trash-alt fa-2x"
+                    onClick={() => this.handleRemove(item.id)}
+                    style={{
+                        marginTop: '15px',
+                        width: "50px",
+                    }}
+                >
+                </button>
+            </div>
+        );
+    }
 }
-export default TodoItem;
 
+export default TodoItem;
