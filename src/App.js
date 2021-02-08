@@ -29,17 +29,20 @@ class App extends Component {
           title: title,
         });
         this.setState({ todoArray: todos });
-        const todo = this.state.todoArray;
-        localStorage.setItem("todo-list", JSON.stringify(todo));
       });
   }
 
-  componentDidMount() {
+  componentWillMount() {//will happen first
     const data = localStorage.getItem('todo-list');//gets the item
     const dataToObj = JSON.parse(data);//converts back to js object
     this.setState({
       todoArray: data ? dataToObj : [] 
     })
+  }
+
+  componentDidUpdate() {//will happen second
+    const todo = this.state.todoArray;
+    localStorage.setItem("todo-list", JSON.stringify(todo));//converts state object into string
   }
 
 
