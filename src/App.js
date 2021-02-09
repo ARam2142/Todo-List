@@ -16,22 +16,6 @@ class App extends Component {
     //this.toggleComplete = this.toggleComplete.bind(this)
   }
 
-  addToList = (title, id) => {
-    this.setState({
-      title: title,
-      id: id
-    }
-      , () => {//pass in call back as a function
-        console.log(this.state)
-        let todos = this.state.todoArray;
-        todos.push({
-          id: id,
-          title: title,
-        });
-        this.setState({ todoArray: todos });
-      });
-  }
-
   componentWillMount() {//will happen first
     const data = localStorage.getItem('todo-list');//gets the item
     const dataToObj = JSON.parse(data);//converts back to js object
@@ -45,6 +29,23 @@ class App extends Component {
     localStorage.setItem("todo-list", JSON.stringify(todo));//converts state object into string
   }
 
+  addToList = (title, id) => {
+    this.setState({
+      title: title,
+      id: id,
+      completed: false
+    }
+      , () => {//pass in call back as a function
+        console.log(this.state)
+        let todos = this.state.todoArray;
+        todos.push({
+          id: id,
+          title: title,
+          completed: false
+        });
+        this.setState({ todoArray: todos });
+      });
+  }
 
   //delete todo items
   deleteTodo = (id) => {
@@ -61,23 +62,26 @@ class App extends Component {
   };
 
 
-  // toggleComplete = (id) => {
-  //   //source from stackoverflox over: how to make line through todo
-  //   this.setState(
-  //     this.todoArray.map(todo => {
-  //       if (todo.id === id) {
-  //         return {
-  //           ...todo,
-  //           todoArray: !todo.completed
-  //         };
-  //       }
-  //       return todo
-  //     })
-  //   )
-  // }
+  toggleComplete = (id) => {
 
+    //spread operator copies list
+    const todoArray = [...this.state.todoArray];
 
-  //use todoArray.push this.state
+    //map method maps over element in each object
+    const mapArray = todoArray.map(todo => {
+      if (todo.id === id) {//checks if todo is === to id 
+        return {
+          ...todo, completed: !todo.completed
+        }
+      }
+      return todo
+    })//source cited: todolist react for beginners youtube
+
+    this.setState({
+      todoArray: mapArray,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -95,7 +99,7 @@ class App extends Component {
                 key={index}
                 item={item}
                 deleteTodo={this.deleteTodo}
-                toggleClick={this.toggleComplete}
+                toggleComplete={this.toggleComplete}
               />
             })}
           </ul>
