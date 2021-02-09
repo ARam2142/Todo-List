@@ -21,14 +21,34 @@ html, body {
   border-radius: 0%;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  margin-top: 15px;
+  width: 50px;
 }
 
 .fa-trash-alt {
   border-radius: 0%;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  margin-top: 15px;
+  width: 50px;
+}
+
+div.list-section {
+  display: flex;
 }
 
 ul.list-group {
   margin-bottom: 100px;
+  display: flex; 
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-top: 15px;
+  background-color: grey;
+  min-width: 375px;
 }
