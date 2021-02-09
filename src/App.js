@@ -13,7 +13,6 @@ class App extends Component {
       completed: false,
       todoArray: []
     };
-    //this.toggleComplete = this.toggleComplete.bind(this)
   }
 
   componentWillMount() {//will happen first
