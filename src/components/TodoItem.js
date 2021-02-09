@@ -6,10 +6,6 @@ class TodoItem extends Component {
         this.state = {
         };
     }
-
-    handleRemove=(id)=> {
-        this.props.deleteTodo(id)
-    }
     
     render() {
         let {item} = this.props;
@@ -20,7 +16,7 @@ class TodoItem extends Component {
             }}>
                 <button
                     className="btn btn-outline-success fas fa-check-square fa-2x"
-                    //onClick={this.hanld}
+                    onClick={()=>this.props.toggleComplete(item.id)}
                     style={{
                         marginTop: '15px',
                         width: "50px",
@@ -40,7 +36,7 @@ class TodoItem extends Component {
 
                 </li>
                 <button className="btn btn-outline-danger fas fa-trash-alt fa-2x"
-                    onClick={() => this.handleRemove(item.id)}
+                    onClick={() => this.props.deleteTodo(item.id)}
                     style={{
                         marginTop: '15px',
                         width: "50px",
