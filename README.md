@@ -10,9 +10,13 @@ AS A user I want to be able to write down a list of todos so that i can keep tra
 # Application
 This is a simple todo application. It includes the features to add, delete and check of tasks put in the list. This is very handy for somebody that has a lot of things that need to be done.
 
+# Screenshots
+![Screen Shot 2021-02-10 at 5 36 18 PM](https://user-images.githubusercontent.com/65634748/107581991-df5c5900-6bc6-11eb-9f64-5f595db5fbf6.png)
 # Outcome
 
 This was supposed to be a simple application. There was going to be nothing complex. After watching a few tutorials I decided to expand a little bit. It did come with problems. I did have trouble with implementing some of the features. This took me a while to finish but it is done.
+
+
 # Technologies
 
 - React
